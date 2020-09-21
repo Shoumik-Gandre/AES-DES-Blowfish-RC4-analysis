@@ -60,6 +60,7 @@ public class Blowfish {
 
         System.out.println("Decrypted Data: " + decrypted);
 
-        System.out.println("encryption duration: "+encryptDuration+" ns \nDecryption duration: "+decryptDuration+" ns");
+        System.out.println("encryption duration: "+encryptDuration+" ns");
+        System.out.println("Decryption duration: "+decryptDuration+" ns");
     }
 }
