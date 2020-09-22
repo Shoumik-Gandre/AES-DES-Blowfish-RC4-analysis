@@ -20,6 +20,7 @@ class DESmanualKey {
     public static void main(String[] args) {
 
         try {
+            System.out.print("Key: ");
             // read DES key
             Scanner scanner = new Scanner(System.in);
             key = scanner.nextLine();
@@ -27,6 +28,9 @@ class DESmanualKey {
             // convert key to a form we like
             byte[] keyData = Arrays.copyOf(key.getBytes(), 8);
             SecretKeySpec secretKeySpec = new SecretKeySpec(keyData, "DES");
+
+            System.out.print("Plaintext: ");
+            plaintext = scanner.nextLine();
 
             encipher = Cipher.getInstance("DES");
             decipher = Cipher.getInstance("DES");

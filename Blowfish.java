@@ -4,11 +4,13 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.Scanner;
 
 public class Blowfish {
 
-    private static final String key = "!this+is/our*secret;key";
+    private static String key = "!this+is/our*secret;key";
     private static Cipher encipher, decipher;
+    private static String plaintext;
 
     public static String encrypt(String plaintext) {
         try {
@@ -32,6 +34,14 @@ public class Blowfish {
 
     public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
 
+        System.out.print("Key: ");
+        // read DES key
+        Scanner scanner = new Scanner(System.in);
+        key = scanner.nextLine();
+
+        System.out.print("Plaintext: ");
+        plaintext = scanner.nextLine();
+
         byte[] keyData = key.getBytes();
         SecretKeySpec secretKeySpec = new SecretKeySpec(keyData, "Blowfish");
 
@@ -45,7 +55,7 @@ public class Blowfish {
         String encrypted, decrypted;
 
         startTime = System.nanoTime();
-        encrypted = encrypt("my secret be safe with Mr.Blowfish");
+        encrypted = encrypt(plaintext);
         endTime = System.nanoTime();
 
         long encryptDuration = (endTime - startTime);

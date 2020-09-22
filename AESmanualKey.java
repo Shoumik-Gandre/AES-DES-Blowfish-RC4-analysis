@@ -16,6 +16,7 @@ public class AESmanualKey {
 
     public static void main(String[] args) {
         try {
+            System.out.print("Key: ");
             // read AES key
             Scanner scanner = new Scanner(System.in);
             key = scanner.nextLine();
@@ -23,6 +24,9 @@ public class AESmanualKey {
             // convert key to a form we like
             byte[] keyData = Arrays.copyOf(key.getBytes(), 16);
             SecretKeySpec secretKeySpec = new SecretKeySpec(keyData, "AES");
+
+            System.out.print("Plaintext: ");
+            plaintext = scanner.nextLine();
 
             encipher = Cipher.getInstance("AES");
             decipher = Cipher.getInstance("AES");
